@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 class TestManagerAPIClient {
-    static #apiUrl = 'https://run-result-import.dev.lippia.io';
+    static #apiUrl;
     static #runId;
 
     static getRunId() {
@@ -15,17 +15,18 @@ class TestManagerAPIClient {
     static getApiHeaders() {
         return {
             'Content-Type': 'application/json',
-            'username': process.env.TEST_MANAGER_USERNAME || 'admin',
-            'password': process.env.TEST_MANAGER_PASSWORD || 'admin'
+            'username': process.env.TEST_MANAGER_USERNAME,
+            'password': process.env.TEST_MANAGER_PASSWORD
         };
     }
 
+    // technical debt
     static getAPIUrl() {
-        if (this.#apiUrl) {
+        if (this.#apiUrl) { // ?
             return this.#apiUrl;
         }
 
-        let uri = process.env.TEST_MANAGER_API_HOST || 'https://run-result-import.dev.lippia.io';
+        let uri = process.env.TEST_MANAGER_API_HOST;
 
         if (process.env.TEST_MANAGER_API_PORT) {
             uri += `:${process.env.TEST_MANAGER_API_PORT}`;
@@ -37,8 +38,8 @@ class TestManagerAPIClient {
     static createRun() {
         return Promise.resolve().then(async () => {
             const run = {
-                runName: process.env.TEST_MANAGER_RUN_NAME || '[formatter] cucumber-js adapter byafuauuuuuuU #1',
-                projectCode: process.env.TEST_MANAGER_PROJECT_CODE || 'REPORTES'
+                runName: process.env.TEST_MANAGER_RUN_NAME,
+                projectCode: process.env.TEST_MANAGER_PROJECT_CODE
             };
 
             const url = `${this.getAPIUrl()}/runs`;
@@ -47,7 +48,7 @@ class TestManagerAPIClient {
                 const result = await axios.post(url, run, {headers: this.getApiHeaders()});
                 this.#runId = result.data.id;
             } catch (error) {
-                throw error;
+                throw new error;
             }
         });
     }
@@ -59,7 +60,7 @@ class TestManagerAPIClient {
             try {
                 await axios.post(url, test, { headers: this.getApiHeaders() });
             } catch (error) {
-                console.info(error);
+                throw new error;
             }
         });
     }

@@ -41,7 +41,6 @@ class TestManagerAPIAdapter extends SummaryFormatter {
     }
 
     async onTestCaseStarted(testCaseStarted) {
-        this.steps = [];
     }
 
     async onTestStepStarted(testStepStarted) {
@@ -76,6 +75,7 @@ class TestManagerAPIAdapter extends SummaryFormatter {
         }
     }
 
+    // technical debt
     async onTestCaseFinished(testCaseFinished) {
         const { gherkinDocument, pickle, worstTestStepResult } =
             this.eventDataCollector.getTestCaseAttempt(testCaseFinished.testCaseStartedId || '');
@@ -89,7 +89,19 @@ class TestManagerAPIAdapter extends SummaryFormatter {
             tags.push(tag.name);
         });
 
-        await TestManagerAPIClient.createTest(new Test(name, TestManagerAPIClient.getRunId(), status, featureName, 'SCENARIO', tags, this.steps));
+        const test = new Test(
+            name,
+            TestManagerAPIClient.getRunId(),
+            status,
+            featureName,
+            'SCENARIO',
+            tags,
+            this.steps
+        );
+
+        await TestManagerAPIClient.createTest(test);
+
+        this.steps = [];
     }
 
     formatStatus(status) {
