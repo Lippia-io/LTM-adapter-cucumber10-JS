@@ -1,0 +1,21 @@
+{
+  "name": "cucumber",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.0.1",
+    "@cucumber/messages": "^22.0.0"
+  },
+  "dependencies": {
+    "async-mutex": "^0.4.0",
+    "axios": "^1.6.2",
+    "p-queue": "^8.0.1"
+  }
+}
