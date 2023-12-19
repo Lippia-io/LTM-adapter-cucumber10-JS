@@ -1,13 +1,13 @@
 {
-  "name": "cucumber",
-  "version": "1.0.0",
-  "description": "",
+  "name": "ltm-cucumber10-adapter",
+  "version": "1.0",
+  "description": "Lippia Test Manager Adapter For Cucumber JS",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "CrowdAr S.A.",
   "license": "ISC",
   "devDependencies": {
     "@cucumber/cucumber": "^10.0.1",
@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "async-mutex": "^0.4.0",
-    "axios": "^1.6.2",
-    "p-queue": "^8.0.1"
+    "axios": "^1.6.2"
   }
 }
