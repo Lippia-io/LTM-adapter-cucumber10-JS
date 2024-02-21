@@ -1,4 +1,5 @@
 const axios = require('axios');
+require('dotenv').config();
 
 class TestManagerAPIClient {
     static #apiUrl;
@@ -42,25 +43,25 @@ class TestManagerAPIClient {
                 projectCode: process.env.TEST_MANAGER_PROJECT_CODE
             };
 
-            const url = `${this.getAPIUrl()}/runs`;
+            const url = `${this.getAPIUrl()}/runs/runs`;
 
             try {
                 const result = await axios.post(url, run, {headers: this.getApiHeaders()});
                 this.#runId = result.data.id;
             } catch (error) {
-                throw new error;
+                throw new Error(error);
             }
         });
     }
 
     static createTest(test) {
         return Promise.resolve().then(async () => {
-            const url = `${this.getAPIUrl()}/tests`;
+            const url = `${this.getAPIUrl()}/runs/tests`;
 
             try {
                 await axios.post(url, test, { headers: this.getApiHeaders() });
             } catch (error) {
-                throw new error;
+                throw new Error(error);
             }
         });
     }
