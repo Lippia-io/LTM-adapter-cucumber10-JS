@@ -1,5 +1,0 @@
-include:
-  - project: 'lippia/products/template-ci'
-    ref: master
-    file: 
-      - 'Publish.yml'
