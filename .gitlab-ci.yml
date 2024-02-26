@@ -9,9 +9,9 @@ Publish Node.js:
     - npm install
     - npm publish --registry=${NEXUS_REGISTRY_URL}
   rules:
-    - if: '$CI_COMMIT_BRANCH == "release" && $NEXUS_OSSRH_UPLOAD'
+    - if: '$CI_COMMIT_BRANCH == "release"
       changes:
         - "*[^.md]"
-    - if: '($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "master") && $NEXUS_OSSRH_UPLOAD'
+    - if: '($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "master")
       changes:
         - "*[^.md]"
