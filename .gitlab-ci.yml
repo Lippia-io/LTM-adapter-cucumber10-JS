@@ -9,7 +9,3 @@ Publish Node.js:
     - npm install
     - npm run build
     - npm publish --registry=${NEXUS_REGISTRY_URL}
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "Devops-temp" && $NEXUS_OSSRH_UPLOAD'
-      changes:
-        - "*[^.md]"
