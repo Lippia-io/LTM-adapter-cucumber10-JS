@@ -5,5 +5,13 @@ Publish Node.js:
   image: node:14
   stage: Publish
   script:
+    - sh create-settings.sh
     - npm install
     - npm publish --registry=${NEXUS_REGISTRY_URL}
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "release" && $NEXUS_OSSRH_UPLOAD'
+      changes:
+        - "*[^.md]"
+    - if: '($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "master") && $NEXUS_OSSRH_UPLOAD'
+      changes:
+        - "*[^.md]"
