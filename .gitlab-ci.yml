@@ -6,5 +6,4 @@ Publish Node.js:
   stage: Publish
   script:
     - npm install
-    - npm run build
     - npm publish --registry=${NEXUS_REGISTRY_URL}
