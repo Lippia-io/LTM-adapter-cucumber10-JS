@@ -1,6 +1,6 @@
 {
   "name": "@ltm/cucumber10-adapter",
-  "private": true,
+  "private":true,
   "version": "1.0.0",
   "description": "Lippia Test Manager Adapter For Cucumber JS",
   "main": "index.js",
