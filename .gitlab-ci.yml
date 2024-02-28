@@ -3,5 +3,5 @@ include:
     ref: master
     file: 
       - 'Publish/OSSRH.yml'
-      - 'Publish/nexus.yml'
+      - 'Publish/nexus-node.yml'
       - 'Publish/github.yml'
