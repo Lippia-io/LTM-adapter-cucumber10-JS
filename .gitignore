@@ -1,0 +1,17 @@
+# Archivos generados por Node.js
+node_modules/
+
+# Archivos creados por IDEs o editores de texto
+.vscode/
+.idea/
+*.sublime-*
+
+# Archivos de logs
+*.log
+logs/
+
+# Archivos de configuración locales
+.env
+
+# Ignorar archivo .npmrc
+.npmrc
