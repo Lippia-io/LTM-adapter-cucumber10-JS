@@ -1,7 +1,5 @@
 include:
   - project: 'lippia/products/template-ci'
     ref: master
-    file: 
-      - 'Publish/OSSRH.yml'
-      - 'Publish/nexus-node.yml'
-      - 'Publish/github.yml'
+    file:
+      - 'Publish.yml'
